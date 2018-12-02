@@ -72,20 +72,15 @@ public class FunctionDAO {
         System.out.println(className);
         className = className.substring(className.indexOf(".") + 1);
         String query = "From " + className;
-        //System.out.println(query);
 
         if (!key.equals("")) {
             query = getQuery(entities, key, query);
         }
         System.out.println(query);
         try {
-        System.out.println("1");
             session = factory.openSession();
-        System.out.println("4");
             transaction = session.beginTransaction();
-        System.out.println("3");
             rs = session.createQuery(query).list();
-        System.out.println("2");
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,11 +116,13 @@ public class FunctionDAO {
     public Object getById(Object entity, Object id) {
         Object object = new Object();
         String className = entity.getClass().getName();
+        className = className.substring(className.indexOf(".") + 1);
+        String query = className.toLowerCase() +"Id";
         try {
             session = factory.openSession();
             transaction = session.beginTransaction();
             object = session.createQuery("FROM " + entity.getClass().getSimpleName()
-                    + " WHERE " + "?" + " =" + id)
+                    + " WHERE " + query + " =" + id)
                     .uniqueResult();
             transaction.commit();
         } catch (Exception e) {

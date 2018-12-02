@@ -39,8 +39,8 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public Employee getById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object getById(Object id) {
+        return this.daoid.getById(new Employee(), id);
     }
 
     @Override

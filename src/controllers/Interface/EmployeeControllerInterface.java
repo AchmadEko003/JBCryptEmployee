@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface EmployeeControllerInterface {
     public List<Object> search(String keyword);
-    public Employee getById(String id);
+    public Object getById(Object id);
     public String insert(String id, String name);
     public String update(String id, String name);
     public String delete(String id);

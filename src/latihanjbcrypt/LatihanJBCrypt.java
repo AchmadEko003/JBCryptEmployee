@@ -34,13 +34,14 @@ public class LatihanJBCrypt {
 
 //        DAOInterface daoi = new GeneralDAO(sessionFactory);
         EmployeeControllerInterface eci = new EmployeeController(sessionFactory);
+        System.out.println(eci.getById("100"));
 //        EmployeeController employeeController = new EmployeeController(sessionFactory);
-        int count = 0;
-        for (Object object : eci.search("Eko")) {
-            Employee e = (Employee) object;
-            System.out.println(e.getLastName());
-//            count++;
-        }
+//        int count = 0;
+//        for (Object object : eci.search("Eko")) {
+//            Employee e = (Employee) object;
+//            System.out.println(e.getLastName());
+////            count++;
+//        }
 
         //DepartmentController dc = new DepartmentController(sessionFactory);
 //        for (Region allregion : rdao.getAllRegion()) {

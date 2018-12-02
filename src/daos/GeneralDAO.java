@@ -50,7 +50,6 @@ public class GeneralDAO implements DAOInterface {
      */
     @Override
     public Object getById(Object entity,Object id) {
-        
         return this.fdao.getById(entity,id);
     }
 }

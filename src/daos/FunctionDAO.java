@@ -71,7 +71,7 @@ public class FunctionDAO {
         String className = entities.getClass().getName();
         System.out.println(className);
         className = className.substring(className.indexOf(".") + 1);
-        String query = "From " + className;
+        String query = "From " + className + " ORDER BY 1";
 
         if (!key.equals("")) {
             query = getQuery(entities, key, query);

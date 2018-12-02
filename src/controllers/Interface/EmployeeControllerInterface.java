@@ -15,7 +15,9 @@ import java.util.List;
 public interface EmployeeControllerInterface {
     public List<Object> search(String keyword);
     public Object getById(Object id);
-    public String insert(String id, String name);
-    public String update(String id, String name);
-    public String delete(String id);
+    public Boolean insert(String employeeId, String firstName, String lastName, String email, String phoneNumber, String hireDate, String jobId, String salary, String commissionPct, String managerId, String departmentId);
+    public Boolean delete(String employeeId);
+    public List<Object> jobId(String keyword);
+    public List<Object> departmentId(String keyword);
+    public String register(String username, String password);
 }

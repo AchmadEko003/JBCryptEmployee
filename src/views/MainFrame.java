@@ -110,8 +110,9 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         EmployeesView ev = new EmployeesView();
         EmployeeRegisterView erv = new EmployeeRegisterView();
-        ev.show();
-        dskpMain.add(ev);
+        EmployeeLoginView elv = new EmployeeLoginView();
+        elv.show();
+        dskpMain.add(elv);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

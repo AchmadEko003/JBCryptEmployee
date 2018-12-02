@@ -34,7 +34,7 @@ public class LatihanJBCrypt {
 
         DAOInterface daoi = new GeneralDAO(sessionFactory);
         EmployeeControllerInterface eci = new EmployeeController(sessionFactory);
-        System.out.println(eci.getById("100"));
+        System.out.println(eci.search("110"));
 //        System.out.println(eci.insert("220", "wae", "eko", "oda1ww", "123118", "09/10/2018", "IT_PROG", "5000", "0.0", "100", "100"));
 //        EmployeeController employeeController = new EmployeeController(sessionFactory);
 //        int count = 0;

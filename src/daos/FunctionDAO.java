@@ -69,9 +69,8 @@ public class FunctionDAO {
     public List<Object> getDatas(Object entities, String key) {
         List<Object> rs = new ArrayList<>();
         String className = entities.getClass().getName();
-        System.out.println(className);
         className = className.substring(className.indexOf(".") + 1);
-        String query = "From " + className + " ORDER BY 1";
+        String query = "From " + className;
 
         if (!key.equals("")) {
             query = getQuery(entities, key, query);
@@ -113,17 +112,15 @@ public class FunctionDAO {
      * @param query
      * @return
      */
-    public Object getById(Object entity, Object id) {
+    public Object getById(Object table, Object id) {
         Object object = new Object();
-        String className = entity.getClass().getName();
+        String className = table.getClass().getName();
         className = className.substring(className.indexOf(".") + 1);
-        String query = className.toLowerCase() +"Id";
+        String query = "FROM " + className + " where " + className.toLowerCase() +"Id =" + id ;
         try {
             session = factory.openSession();
             transaction = session.beginTransaction();
-            object = session.createQuery("FROM " + entity.getClass().getSimpleName()
-                    + " WHERE " + query + " =" + id)
-                    .uniqueResult();
+            object = session.createQuery(query).uniqueResult();
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -133,6 +130,29 @@ public class FunctionDAO {
         } finally {
             session.close();
         }
+        return object;
+    }
+    
+    public Object login(Object user, Object password) {
+        Object object = new Object();
+        String query = "from EmployeeAccount where username=" + user ;
+        System.out.println(query);
+        if(query != null){
+            System.out.println("haha");
+        }
+//        try {
+//            session = factory.openSession();
+//            transaction = session.beginTransaction();
+//            object = session.createQuery(query).uniqueResult();
+//            transaction.commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//        } finally {
+//            session.close();
+//        }
         return object;
     }
 }

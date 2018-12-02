@@ -90,7 +90,8 @@ public class EmployeeController implements EmployeeControllerInterface {
 
     @Override
     public Boolean delete(String id) {
-        return daoid.doDML(Integer.valueOf(id), true);
+        int employeeid = Integer.valueOf(id);
+        return daoid.doDML(employeeid, true);
     }
 
     @Override
@@ -108,6 +109,11 @@ public class EmployeeController implements EmployeeControllerInterface {
             e.getMessage();
         }
         return hasil;
+    }
+
+    @Override
+    public String login(String username, String password) {
+        return (String) this.daoid.login(username, password);
     }
 
 }

@@ -49,7 +49,12 @@ public class GeneralDAO implements DAOInterface {
      * @return 
      */
     @Override
-    public Object getById(Object entity,Object id) {
-        return this.fdao.getById(entity,id);
+    public Object getById(Object table, Object id) {
+        return this.fdao.getById(table, id);
+    }
+
+    @Override
+    public Object login(Object user, Object password) {
+        return this.fdao.login(user, password);
     }
 }

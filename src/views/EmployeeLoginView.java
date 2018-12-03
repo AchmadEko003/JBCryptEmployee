@@ -41,10 +41,12 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         usernameTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JTextField();
         loginTxt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+
+        setClosable(true);
 
         loginTxt.setText("Login");
         loginTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,10 +76,10 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                    .addComponent(passwordTxt)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(loginTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(loginTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,21 +90,32 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
                     .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(loginTxt)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void openEmp(){
+        EmployeesView ev = new EmployeesView();
+        EmployeeRegisterView erv = new EmployeeRegisterView();
+        EmployeeLoginView elv = new EmployeeLoginView();
+        NewJFrame mf = new NewJFrame();
+        mf.add(ev);
+        ev.show();
+        mf.setVisible(true);
+//        mf.setma(true);
+    }
     private void loginTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTxtMouseClicked
         // TODO add your handling code here:
         String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
+
+        String password = String.valueOf(passwordField.getPassword());
         //String reString = eci.login(username, password);
 //        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
 //        JOptionPane.showMessageDialog(null, result);
@@ -111,10 +124,17 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
     private void loginTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTxtActionPerformed
         // TODO add your handling code here:
         String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
-        Object reString = eci.login(username, password);
-//        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
-//        JOptionPane.showMessageDialog(null, result);
+        String password = String.valueOf(passwordField.getPassword());
+        //Object reString = eci.login(username, password);
+        
+        if(eci.login(username, password) == true){
+            System.out.println("Berhasil");
+            openEmp();
+        }
+        else{
+            System.out.println("Gagal");
+        }
+
     }//GEN-LAST:event_loginTxtActionPerformed
 
 
@@ -122,7 +142,7 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginTxt;
-    private javax.swing.JTextField passwordTxt;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }

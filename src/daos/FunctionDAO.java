@@ -5,6 +5,8 @@
  */
 package daos;
 
+import entities.Employee;
+import entities.EmployeeAccount;
 import entities.Region;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import tools.BCrypt;
 
 /**
  *
@@ -133,26 +136,32 @@ public class FunctionDAO {
         return object;
     }
     
-    public Object login(Object user, Object password) {
-        Object object = new Object();
-        String query = "from EmployeeAccount where username=" + user ;
-        System.out.println(query);
-        if(query != null){
-            System.out.println("haha");
+    public EmployeeAccount login(Object user) {
+        EmployeeAccount object = null;
+        String query = "from EmployeeAccount where username= '" + user + "'" ;
+        try {
+            session = factory.openSession();
+            transaction = session.beginTransaction();
+            object = (EmployeeAccount) session.createQuery(query).uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            session.close();
         }
-//        try {
-//            session = factory.openSession();
-//            transaction = session.beginTransaction();
-//            object = session.createQuery(query).uniqueResult();
-//            transaction.commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//        } finally {
-//            session.close();
-//        }
         return object;
     }
+    
+    public boolean validationLogin(Object user, String password){
+        EmployeeAccount e = this.login(user);
+        if(e != null){
+            if(BCrypt.checkpw(password, e.getPassword())){
+                return true;
+            }
+        }
+        return false;
+    } 
 }

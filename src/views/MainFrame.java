@@ -77,9 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(dskpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(dskpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,9 +99,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        DepartmentView dv = new DepartmentView();
-        dv.show();
-        dskpMain.add(dv);
+        EmployeesView ev = new EmployeesView();
+        EmployeeRegisterView erv = new EmployeeRegisterView();
+        EmployeeLoginView elv = new EmployeeLoginView();
+        erv.show();
+        dskpMain.add(erv);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -111,8 +111,8 @@ public class MainFrame extends javax.swing.JFrame {
         EmployeesView ev = new EmployeesView();
         EmployeeRegisterView erv = new EmployeeRegisterView();
         EmployeeLoginView elv = new EmployeeLoginView();
-        ev.show();
-        dskpMain.add(ev);
+        elv.show();
+        dskpMain.add(elv);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

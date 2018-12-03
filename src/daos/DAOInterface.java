@@ -15,5 +15,5 @@ public interface DAOInterface {
     public boolean doDML(Object object, boolean isDelete);//iud
     public List<Object> doDDL(Object table, String keyword);//sga
     public Object getById(Object table, Object id);
-    public Object login(Object user, Object password);
+    public boolean login(Object user, String password);
 }

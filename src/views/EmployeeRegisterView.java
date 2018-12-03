@@ -44,6 +44,8 @@ private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         jLabel2 = new javax.swing.JLabel();
         registerTxt = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setText("Username");
 
         jLabel2.setText("Password");
@@ -91,7 +93,7 @@ private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(registerTxt)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,7 +107,7 @@ private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private void registerTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerTxtMouseClicked
         // TODO add your handling code here:
         String username = usernameTxt.getText();
-        String password = passwordTxt.getText();
+        String password = String.valueOf(passwordTxt.getText());
         
         String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
         JOptionPane.showMessageDialog(null, result);

@@ -444,45 +444,48 @@ public class EmployeesView extends javax.swing.JInternalFrame {
 
     private void update_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_ButtonActionPerformed
         // TODO add your handling code here:
-        //        String empFN = firstname_field.getText();
-        //        String empLN = lastname_field.getText();
-        //        String email = email_field.getText();
-        //        String phoneNum = phonenumber_field.getText();
-        //        String hireNum = hiredate_field.getText();
-        //        String jobid = (String) jobid_field.getSelectedItem();
-        //        int sal = Integer.valueOf(salary_field.getText());
-        //        double comm = Double.valueOf(commissionpct_field.getText());
-        //        String managerId = (String) cbxmanageId.getSelectedItem();
-        //        String departmentId = (String) cbxDepartmentId.getSelectedItem();
-        //        int ID = Integer.valueOf(employeeid_field.getText());
-        //        String jobId = jobid.substring(0, jobid.indexOf(" "));
-        //        String mngId = managerId.substring(0, managerId.indexOf(" "));
-        //        String dprtId = departmentId.substring(0, departmentId.indexOf(" "));
-        //        int dialogButton = JOptionPane.YES_NO_OPTION;
-        //        int dialogResult = JOptionPane.showConfirmDialog(null, "Update data?", "Warning", dialogButton);
-        //        if (dialogResult == JOptionPane.YES_OPTION) {
-        //            if (employeeController.update(empFN, empLN, email, phoneNum, hireNum, jobId, sal, comm, mngId, dprtId, ID) == true) {
-        //                JOptionPane.showMessageDialog(null, "Update Berhasil");
-        //                kosongData();
-        //                insertbutton.setEnabled(true);
-        //                deletebutton.setEnabled(true);
-        //                update_Button.setEnabled(false);
-        //                bindingTable(employeeController.gets());
-        //                employeeid_field.setEnabled(false);
-        //                employeeid_field.setText(employeeController.lastId());
-        //            } else {
-        //                JOptionPane.showMessageDialog(null, "Update Gagal");
-        //                employeeid_field.setEnabled(false);
-        //                employeeid_field.setText(employeeController.lastId());
-        //            }
-        //        } else {
-        //            kosongData();
-        //            insertbutton.setEnabled(true);
-        //            deletebutton.setEnabled(true);
-        //            update_Button.setEnabled(false);
-        //            employeeid_field.setEnabled(false);
-        //            employeeid_field.setText(employeeController.lastId());
-        //        }
+        DateFormat formats = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        String employeeid = employeeid_field.getText();
+        String firstname = firstname_field.getText();
+        String lastname = lastname_field.getText();
+        String email = email_field.getText();
+        String phonenumber = phonenumber_field.getText();
+        Date hiredate = dateField.getDate();
+        String dates = formats.format(hiredate);
+
+        String jobid = (String) jobid_field.getSelectedItem();
+        String salary = salary_field.getText();
+        String commissionpct = commissionpct_field.getText();
+        String managerId = (String) cbxmanageId.getSelectedItem();
+        String departmentid = (String) cbxDepartmentId.getSelectedItem();
+        String jobId = jobid.substring(0, jobid.indexOf(" "));
+        String mngId = managerId.substring(0, managerId.indexOf(" "));
+        String dprtId = departmentid.substring(0, departmentid.indexOf(" "));
+
+        if (!employeeid.equals("") && !firstname.equals("")
+                && !lastname.equals("") && !email.equals("")
+                && !phonenumber.equals("") && !hiredate.equals("")
+                && !jobid.equals("") && !salary.equals("")
+                && !commissionpct.equals("") && !managerId.equals("")
+                && !departmentid.equals("")) {
+            if (eci.insert(employeeid, firstname,
+                    lastname, email,
+                    phonenumber,
+                    dates, jobId,
+                    salary, commissionpct,
+                    mngId, dprtId)) {
+                JOptionPane.showMessageDialog(null, "update berhasil");
+                //kosongData();
+                bindingTable(eci.search(""));
+                employeeid_field.setEnabled(false);
+                //employeeid_field.setText(employeeController.lastId());
+            } else {
+                JOptionPane.showMessageDialog(null, "update gagal");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "form input tidak boleh kosong");
+        }
     }//GEN-LAST:event_update_ButtonActionPerformed
 
     private void insertbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertbuttonActionPerformed

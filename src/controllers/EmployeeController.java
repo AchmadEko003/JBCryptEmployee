@@ -112,7 +112,7 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public Object login(Object username, Object password) {
+    public boolean login(Object username, String password) {
         return this.daoid.login(username, password);
     }
 

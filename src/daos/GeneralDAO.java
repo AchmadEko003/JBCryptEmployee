@@ -54,7 +54,7 @@ public class GeneralDAO implements DAOInterface {
     }
 
     @Override
-    public Object login(Object user, Object password) {
-        return this.fdao.login(user, password);
+    public boolean login(Object user, String password) {
+        return this.fdao.validationLogin(user, password);
     }
 }

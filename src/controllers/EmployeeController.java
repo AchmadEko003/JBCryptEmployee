@@ -112,8 +112,8 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public String login(String username, String password) {
-        return (String) this.daoid.login(username, password);
+    public Object login(Object username, Object password) {
+        return this.daoid.login(username, password);
     }
 
 }

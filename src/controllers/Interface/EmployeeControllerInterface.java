@@ -20,5 +20,5 @@ public interface EmployeeControllerInterface {
     public List<Object> jobId(String keyword);
     public List<Object> departmentId(String keyword);
     public String register(String username, String password);
-    public String login(String username, String password);
+    public Object login(Object username, Object password);
 }

@@ -103,14 +103,18 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
-        String reString = eci.login(username, password);
+        //String reString = eci.login(username, password);
 //        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
 //        JOptionPane.showMessageDialog(null, result);
     }//GEN-LAST:event_loginTxtMouseClicked
 
     private void loginTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTxtActionPerformed
         // TODO add your handling code here:
-
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
+        Object reString = eci.login(username, password);
+//        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
+//        JOptionPane.showMessageDialog(null, result);
     }//GEN-LAST:event_loginTxtActionPerformed
 
 

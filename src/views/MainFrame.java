@@ -111,8 +111,8 @@ public class MainFrame extends javax.swing.JFrame {
         EmployeesView ev = new EmployeesView();
         EmployeeRegisterView erv = new EmployeeRegisterView();
         EmployeeLoginView elv = new EmployeeLoginView();
-        elv.show();
-        dskpMain.add(elv);
+        ev.show();
+        dskpMain.add(ev);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

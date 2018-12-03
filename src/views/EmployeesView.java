@@ -118,6 +118,8 @@ public class EmployeesView extends javax.swing.JInternalFrame {
         lastname_field = new javax.swing.JTextField();
         dateField = new org.jdesktop.swingx.JXDatePicker();
 
+        setClosable(true);
+
         jobid_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Job" }));
         jobid_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

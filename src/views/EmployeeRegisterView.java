@@ -109,8 +109,8 @@ private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         String username = usernameTxt.getText();
         String password = String.valueOf(passwordTxt.getText());
         
-        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
-        JOptionPane.showMessageDialog(null, result);
+//        String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
+//        JOptionPane.showMessageDialog(null, result);
     }//GEN-LAST:event_registerTxtMouseClicked
 
 

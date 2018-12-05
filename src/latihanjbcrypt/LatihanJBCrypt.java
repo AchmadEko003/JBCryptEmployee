@@ -7,11 +7,20 @@ package latihanjbcrypt;
 
 import controllers.EmployeeController;
 import controllers.Interface.EmployeeControllerInterface;
+import controllers.test;
 import daos.DAOInterface;
 import daos.GeneralDAO;
 import entities.Employee;
 import entities.Region;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import javafx.scene.control.Pagination;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import tools.HibernateUtil;
 
@@ -26,17 +35,17 @@ public class LatihanJBCrypt {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 //        RegionDAO rdao = new RegionDAO(sessionFactory);
 //        RegionControllers rc = new RegionControllers(sessionFactory);
 //        EmployeeControllers ec = new EmployeeControllers(sessionFactory);
 //        EmployeeDAO edao = new EmployeeDAO(sessionFactory);
-
         DAOInterface daoi = new GeneralDAO(sessionFactory);
         EmployeeControllerInterface eci = new EmployeeController(sessionFactory);
         //System.out.println(eci.search("110"));
 //        System.out.println(eci.login("eko", "ekoeko123"));
-        System.out.println(eci.insert("90", "wae", "eko", "odw", "123118", "09/10/2018", "IT_PROG", "5000", "0.0", "100", "80"));
+        //System.out.println(eci.insert("90", "wae", "eko", "odw", "123118", "09/10/2018", "IT_PROG", "5000", "0.0", "100", "80"));
 //        EmployeeController employeeController = new EmployeeController(sessionFactory);
 //        int count = 0;
 //        for (Object object : eci.search("Eko")) {
@@ -44,6 +53,15 @@ public class LatihanJBCrypt {
 //            System.out.println(e.getLastName());
 ////            count++;
 //        }
+        test tes = new test();
+        System.out.println(tes.getPath("report1.jrxml"));
+
+//        File fi = new File("../report1.jrxml");
+//        String path = fi.getAbsolutePath();
+
+//URL url = getClass().getResource("ListStopWords.txt");
+//        System.out.println(path);
+//File f = new File("src/report1.jrxml");
 
         //DepartmentController dc = new DepartmentController(sessionFactory);
 //        for (Region allregion : rdao.getAllRegion()) {

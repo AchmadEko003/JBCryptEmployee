@@ -19,6 +19,6 @@ public interface EmployeeControllerInterface {
     public Boolean delete(String employeeId);
     public List<Object> jobId(String keyword);
     public List<Object> departmentId(String keyword);
-    public String register(String username, String password);
+    public boolean register(String username, String password);
     public boolean login(Object username, String password);
 }

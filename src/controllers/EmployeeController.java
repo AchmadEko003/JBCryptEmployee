@@ -95,15 +95,13 @@ public class EmployeeController implements EmployeeControllerInterface {
     }
 
     @Override
-    public String register(String username, String password) {
-        String hasil = "Gagal";
-        System.out.println(username);
-        System.out.println(password);
+    public boolean register(String username, String password) {
+        boolean hasil = false;
         try {
             EmployeeAccount employeeAccount = new EmployeeAccount(username, password);
             System.out.println(employeeAccount);
             if (daoid.doDML(employeeAccount, false)) {
-                hasil = "Berhasil";
+                hasil = true;
             }
         } catch (Exception e) {
             e.getMessage();

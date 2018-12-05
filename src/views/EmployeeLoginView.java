@@ -45,6 +45,8 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
 
@@ -64,6 +66,17 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Password");
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Belum punya akun?");
+
+        jLabel4.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel4.setText("Klik disini");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,12 +88,14 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(loginTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usernameTxt)
+                    .addComponent(passwordField)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(loginTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(passwordField))
-                .addContainerGap(102, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,22 +108,23 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginTxt)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void openEmp(){
+    private void openEmp() {
         EmployeesView ev = new EmployeesView();
         EmployeeRegisterView erv = new EmployeeRegisterView();
         EmployeeLoginView elv = new EmployeeLoginView();
-        NewJFrame mf = new NewJFrame();
-        mf.add(ev);
         ev.show();
-        mf.setVisible(true);
 //        mf.setma(true);
     }
     private void loginTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginTxtMouseClicked
@@ -126,21 +142,47 @@ public class EmployeeLoginView extends javax.swing.JInternalFrame {
         String username = usernameTxt.getText();
         String password = String.valueOf(passwordField.getPassword());
         //Object reString = eci.login(username, password);
-        
-        if(eci.login(username, password) == true){
-            System.out.println("Berhasil");
-            openEmp();
-        }
-        else{
-            System.out.println("Gagal");
-        }
 
+//        if(eci.login(username, password)){
+//            System.out.println("Berhasil");
+//            openEmp();
+//        }
+//        else{
+//            System.out.println("Gagal");
+//        }
+        if (loginTxt.getText().equals("Login")) {
+            if (eci.login(username, password)) {
+                JOptionPane.showMessageDialog(null, "Berhasil login");
+                openEmp();
+            } else {
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Gagal, ingin membuat akun?", "Warning", dialogButton);
+                if (dialogResult == JOptionPane.YES_OPTION) {
+                    loginTxt.setText("Register");
+                }
+            }
+        } else {
+            if (eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()))) {
+//                String result = eci.register(username, BCrypt.hashpw(password, BCrypt.gensalt()));
+                JOptionPane.showMessageDialog(null, "Berhasil register");
+                loginTxt.setText("Login");
+            } else {
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+            }
+        }
     }//GEN-LAST:event_loginTxtActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        loginTxt.setText("Register");
+    }//GEN-LAST:event_jLabel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton loginTxt;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField usernameTxt;

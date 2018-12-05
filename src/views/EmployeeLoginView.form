@@ -30,14 +30,16 @@
               </Group>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="usernameTxt" alignment="0" pref="207" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="loginTxt" min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="loginTxt" max="32767" attributes="0"/>
+                  <Component id="usernameTxt" alignment="0" max="32767" attributes="0"/>
                   <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel3" min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" pref="76" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="102" max="32767" attributes="0"/>
+              <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,9 +56,14 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="passwordField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="loginTxt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,6 +91,23 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Belum punya akun?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="99" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Klik disini"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel4MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

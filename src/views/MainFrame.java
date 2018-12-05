@@ -5,6 +5,10 @@
  */
 package views;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  *
  * @author yudafatah
@@ -34,6 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,7 +73,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Report");
+
+        jMenuItem4.setText("Employee Report");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -81,10 +95,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(dskpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(dskpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
         );
 
         pack();
@@ -109,11 +120,24 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         EmployeesView ev = new EmployeesView();
-        EmployeeRegisterView erv = new EmployeeRegisterView();
         EmployeeLoginView elv = new EmployeeLoginView();
         elv.show();
         dskpMain.add(elv);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+//        Path fileN = Paths.get("src" + File.separator + "Reports" + File.separator + "report1.jrxml");
+//        Path fileTo = Paths.get("src" + File.separator + "Reports" + File.separator + "report1.jasper");
+//        Path filename = fileN.toAbsolutePath();
+//        Path filetofill = fileTo.toAbsolutePath();
+//        String fileName = filename + "";
+//        String fileToFill = filetofill + "";
+
+        reportForm form = new reportForm("report1");
+        form.show();
+        dskpMain.add(form);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,5 +183,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
